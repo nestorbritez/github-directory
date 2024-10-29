@@ -12,6 +12,7 @@ import ts from 'typescript-eslint'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+
 const compat = new FlatCompat({
   baseDirectory: __dirname,
   recommendedConfig: js.configs.recommended,
@@ -62,13 +63,7 @@ const config = [
         cssFilesRefreshRate: 5_000,
         removeDuplicates: true,
         skipClassAttribute: false,
-        whitelist: [
-          'bg-background',
-          'bg-secondary',
-          'ring-offset-background',
-          'ring-ring',
-          'text-muted-foreground',
-        ],
+        whitelist: [],
         tags: ['tw'], // can be set to e.g. ['tw'] for use in tw`bg-blue`
         classRegex: '^class(Name)?$', // can be modified to support custom attributes. E.g. "^tw$" for `twin.macro`
       },

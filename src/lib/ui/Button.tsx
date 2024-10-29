@@ -16,8 +16,12 @@ const buttonVariants = cva(
         neutro: [
           'border-neutral-400 hover:border-neutral-400 hover:text-black text-neutral-500 dark:text-neutral-300 dark:hover:text-white',
         ],
+        ghost: ['border-0 hover:bg-neutral-100 dark:hover:bg-neutral-800'],
       },
       $size: {
+        icon: [
+          'p-1 size-10 rounded-full flex place-content-center place-items-center',
+        ],
         small: ['text-sm', 'py-1', 'px-2'],
         medium: ['text-base', 'py-2', 'px-4'],
       },
