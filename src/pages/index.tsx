@@ -1,14 +1,12 @@
-import { Header } from '@/components/Header'
 import { UserList } from '@/components/UserList'
-import { Container, Wrapper } from '@/lib/ui/Structure'
+import { H1 } from '@/lib/ui/Headings'
+import { Main } from '@/lib/ui/Structure'
 
-export default function Home() {
+export default function UserListPage() {
   return (
-    <Wrapper>
-      <Header />
-      <Container>
-        <UserList />
-      </Container>
-    </Wrapper>
+    <Main>
+      <H1>Users</H1>
+      <UserList />
+    </Main>
   )
 }

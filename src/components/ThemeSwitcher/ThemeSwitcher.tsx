@@ -1,3 +1,5 @@
+'use client'
+
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
@@ -19,8 +21,6 @@ export const ThemeSwitcher = () => {
 
   const toggleDarkMode = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
-
-    console.log(theme)
   }
 
   if (!mounted) {

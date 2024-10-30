@@ -8,10 +8,10 @@ const buttonVariants = cva(
     variants: {
       $intent: {
         primary: [
-          'border-red-500 hover:border-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-300',
+          'border-indigo-500 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300',
         ],
         secondary: [
-          'border-fuchsia-400 hover:border-fuchsia-400 hover:text-fuchsia-600',
+          'border-indigo-400 hover:border-indigo-400 hover:text-indigo-600',
         ],
         neutro: [
           'border-neutral-400 hover:border-neutral-400 hover:text-black text-neutral-500 dark:text-neutral-300 dark:hover:text-white',

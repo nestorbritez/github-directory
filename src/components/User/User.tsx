@@ -2,44 +2,28 @@ import Image from 'next/image'
 import type { FC } from 'react'
 import tw from 'tailwind-styled-components'
 
-import { Grid } from '@/lib/ui/Structure'
+import type { User } from '@/lib/entities/User'
+import { Link } from '@/lib/ui/Link'
+import { Card } from '@/lib/ui/Structure'
 
-const StyledGrid = tw(Grid)`
-  my-4 grid-cols-[80px_auto]
-  items-center bg-[var(--bg-card)]
-  shadow-md`
+const Content = tw.span`
+  flex flex-col items-start justify-center text-xl`
 
 const Avatar = tw(Image)`
-  flex justify-center`
-
-const UserLink = tw.a`
-  flex flex-col
-  py-2`
+  flex aspect-square size-[120px] justify-center border-r dark:border-neutral-800`
 
 const Label = tw.span`
   text-sm text-neutral-500`
 
-const Name = tw.span``
-
-type UserProps = {
-  id: number
-  avatarUrl: string
-  name: string
-}
-
-const User: FC<UserProps> = ({ id, name, avatarUrl }) => {
-  const link = `/user/${id}`
-
+const User: FC<User> = ({ username, avatarUrl }) => {
   return (
-    <StyledGrid $as="section">
-      <Avatar src={avatarUrl} width={80} height={80} alt={name} />
-      <UserLink href={link}>
+    <Card>
+      <Avatar src={avatarUrl} width={120} height={120} alt={username} />
+      <Content>
         <Label>Github</Label>
-        <Name role="heading" aria-level={1}>
-          @{name}
-        </Name>
-      </UserLink>
-    </StyledGrid>
+        <Link href={`/user/${username}`}>@{username}</Link>
+      </Content>
+    </Card>
   )
 }
 
