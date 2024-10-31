@@ -2,6 +2,13 @@
 
 A Next.js application for exploring GitHub users and managing favorites.
 
+
+https://github.com/user-attachments/assets/0633d855-e9e4-4b7c-95d8-626e2c4ea2b3
+
+
+<img width="1143" alt="Screenshot 2024-10-31 at 12 58 02 PM" src="https://github.com/user-attachments/assets/9169d97a-e8d5-46dd-9466-85a44b076845">
+
+
 ## Features
 
 - User Search: Find GitHub users by username with autocomplete functionality.
@@ -29,12 +36,15 @@ A Next.js application for exploring GitHub users and managing favorites.
 3. Set up environment variables:
 - Create a `.env.local` file in the root directory
 - Add the following variables:
-  ```
-  NEXT_PUBLIC_API_URL=your_api_url
-  NEXT_PUBLIC_GITHUB_TOKEN=your_github_token
-  ```
+    ```
+    NEXT_PUBLIC_API_URL=your_api_url
+    NEXT_PUBLIC_GITHUB_TOKEN=your_github_token
+    NEXT_PUBLIC_GITHUB_API_URL=https://api.github.com
+    ```
 4. Run the development server:
-
+    ```
+    pnpm dev
+    ```
 
 ## Scripts
 
