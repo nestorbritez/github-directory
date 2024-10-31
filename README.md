@@ -1,5 +1,7 @@
 # GitHub Directory
 
+## Live demo [https://github-directory-git-main-nb-ar.vercel.app](https://github-directory-git-main-nb-ar.vercel.app)
+
 A Next.js application for exploring GitHub users and managing favorites.
 
 
