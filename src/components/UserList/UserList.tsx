@@ -13,14 +13,16 @@ const StyledGrid = tw(Grid)`
   grid-cols-1 lg:grid-cols-3`
 
 const UserList: FC = () => {
-  const { data: users } = useUserListData()
+  const { data: users, isLoading } = useUserListData()
+
+  if (isLoading) {
+    return <p>Loading...</p>
+  }
 
   return (
     <QuerySuspense>
       <StyledGrid>
-        {users.map(({ ...props }) => (
-          <User key={props.id} {...props} />
-        ))}
+        {users?.map?.(({ ...props }) => <User key={props.id} {...props} />)}
       </StyledGrid>
     </QuerySuspense>
   )
