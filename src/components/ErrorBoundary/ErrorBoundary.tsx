@@ -1,33 +1,35 @@
 import { QueryErrorResetBoundary } from '@tanstack/react-query'
 import type { FC, ReactNode } from 'react'
-import { Suspense } from 'react'
-import { ErrorBoundary } from 'react-error-boundary'
+import { ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary'
+import tw from 'tailwind-styled-components'
 
 import { Button } from '@/lib/ui/Button'
+
+const Content = tw.div`flex flex-col items-center gap-4 p-10`
 
 type Props = {
   children: ReactNode
 }
 
-const QuerySuspense: FC<Props> = ({ children }) => {
+const ErrorBoundary: FC<Props> = ({ children }) => {
   return (
     <QueryErrorResetBoundary>
       {({ reset }) => (
-        <ErrorBoundary
+        <ReactErrorBoundary
           fallbackRender={({ error, resetErrorBoundary }) => (
-            <div>
+            <Content>
               There was an error!{' '}
               <Button onClick={() => resetErrorBoundary()}>Try again</Button>
               <pre style={{ whiteSpace: 'normal' }}>{error.message}</pre>
-            </div>
+            </Content>
           )}
           onReset={reset}
         >
-          <Suspense fallback={<h1>Loading...</h1>}>{children}</Suspense>
-        </ErrorBoundary>
+          {children}
+        </ReactErrorBoundary>
       )}
     </QueryErrorResetBoundary>
   )
 }
 
-export { QuerySuspense }
+export { ErrorBoundary }

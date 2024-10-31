@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 
+import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { Header } from '@/components/Header'
 import QueryDebugger from '@/components/QueryDebugger/QueryDebugger'
 import { Container, Wrapper } from '@/lib/ui/Structure'
@@ -23,14 +24,16 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class" defaultTheme="light">
       <QueryClientProvider client={queryClient}>
-        <Wrapper>
-          <Header />
-          <Container>
-            <Component {...pageProps} />
-          </Container>
-        </Wrapper>
+        <ErrorBoundary>
+          <Wrapper>
+            <Header />
+            <Container>
+              <Component {...pageProps} />
+            </Container>
+          </Wrapper>
 
-        <QueryDebugger />
+          <QueryDebugger />
+        </ErrorBoundary>
       </QueryClientProvider>
     </ThemeProvider>
   )
