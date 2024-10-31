@@ -3,18 +3,18 @@ import { cva } from 'class-variance-authority'
 import tw from 'tailwind-styled-components'
 
 const buttonVariants = cva(
-  'border px-4 py-2 text-sm uppercase tracking-wider transition',
+  'border px-4 py-2 text-sm uppercase tracking-wider transition rounded',
   {
     variants: {
       $intent: {
         primary: [
-          'border-indigo-500 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300',
+          'border-purple-500 hover:border-purple-400 hover:text-purple-600 dark:hover:text-purple-300',
         ],
         secondary: [
-          'border-indigo-400 hover:border-indigo-400 hover:text-indigo-600',
+          'border-purple-400 hover:border-purple-400 hover:text-purple-600',
         ],
         neutro: [
-          'border-neutral-400 hover:border-neutral-400 hover:text-black text-neutral-500 dark:text-neutral-300 dark:hover:text-white',
+          'border-neutral-400 hover:border-neutral-400 hover:text-black text-neutral-500 dark:text-neutral-300 dark:border-neutral-700 dark:hover:text-white',
         ],
         ghost: ['border-0 hover:bg-neutral-100 dark:hover:bg-neutral-800'],
       },

@@ -15,12 +15,12 @@ const Avatar = tw(Image)`
 const Label = tw.span`
   text-sm text-neutral-500`
 
-const User: FC<User> = ({ username, avatarUrl }) => {
+const User: FC<User> = ({ id, username, avatarUrl }) => {
   return (
     <Card>
       <Avatar src={avatarUrl} width={120} height={120} alt={username} />
       <Content>
-        <Label>Github</Label>
+        <Label>#{id}</Label>
         <Link href={`/user/${username}`}>@{username}</Link>
       </Content>
     </Card>

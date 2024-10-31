@@ -3,6 +3,9 @@ import type { GetServerSidePropsContext } from 'next'
 import type { FC } from 'react'
 import tw from 'tailwind-styled-components'
 
+import { FavoriteButton } from '@/components/FavoriteButton'
+import { useFavorites } from '@/components/FavoriteList/hooks/useFavorites'
+import UserStats from '@/components/UserStats/UserStats'
 import type { User } from '@/lib/entities/User'
 import { H1 } from '@/lib/ui/Headings'
 import { Link } from '@/lib/ui/Link'
@@ -42,12 +45,37 @@ export const DetailItem = tw.div`
   flex items-center gap-2`
 
 const UserPage: FC<UserPageProps> = ({ user, error }) => {
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites()
+
   if (error) {
     return <Main>{error}</Main>
   }
 
-  const { avatarUrl, bio, company, location, name, username, blog, twitter } =
-    user
+  const {
+    id,
+    avatarUrl,
+    bio,
+    company,
+    location,
+    name,
+    username,
+    blog,
+    twitter,
+    following,
+    followers,
+    publicRepos,
+    publicGists,
+  } = user
+
+  const isFavoriteUser = isFavorite(username)
+
+  const handleFavoriteClick = () => {
+    if (isFavoriteUser) {
+      removeFavorite(username)
+    } else {
+      addFavorite(user)
+    }
+  }
 
   return (
     <Main>
@@ -59,7 +87,14 @@ const UserPage: FC<UserPageProps> = ({ user, error }) => {
           <Avatar src={avatarUrl} alt={`${name}'s avatar`} />
           <Info>
             <Headline>
-              <Name>{name}</Name>
+              <small>User # {new Intl.NumberFormat().format(Number(id))}</small>
+              <span className="flex gap-3">
+                <Name>{name}</Name>
+                <FavoriteButton
+                  isFavorite={isFavoriteUser}
+                  onClick={handleFavoriteClick}
+                />
+              </span>
               <Username
                 href={`https://github.com/${username}`}
                 target="_blank"
@@ -99,7 +134,7 @@ const UserPage: FC<UserPageProps> = ({ user, error }) => {
                 <DetailItem>
                   <Twitter className="size-5" />
                   <Link
-                    href={`https://twitter.com/${twitter}`}
+                    href={`https://x.com/${twitter}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -108,6 +143,12 @@ const UserPage: FC<UserPageProps> = ({ user, error }) => {
                 </DetailItem>
               )}
             </Details>
+            <UserStats
+              followers={followers}
+              following={following}
+              publicGists={publicGists}
+              publicRepos={publicRepos}
+            />
           </Info>
         </Content>
       </Card>
@@ -118,7 +159,7 @@ const UserPage: FC<UserPageProps> = ({ user, error }) => {
 const getServerSideProps = async (context: GetServerSidePropsContext) => {
   try {
     const { username } = context.query
-    const user = await api.get(`/users/${username}`)
+    const user = await api.get<User, User>(`/users/${username}`)
 
     return {
       props: {

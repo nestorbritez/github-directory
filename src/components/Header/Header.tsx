@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { GithubIcon } from 'lucide-react'
 import Link from 'next/link'
 import type { FC } from 'react'
 import tw from 'tailwind-styled-components'
@@ -7,15 +7,15 @@ import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { UserSearch } from '@/components/UserSearch'
 import { Container, Wrapper } from '@/lib/ui/Structure'
 
-const LOGO_URL = '/vercel.svg'
+const StyledLink = tw(Link)`flex items-center gap-2`
 
-const Logo = tw(Image)`
-  min-w-[40px] contrast-0`
+const Logo = tw(GithubIcon)`size-8`
 
 const StyledWrapper = tw(Wrapper)`
   sticky top-0 z-10
-  bg-white py-4 shadow
-  dark:bg-black`
+  bg-gradient-to-r from-fuchsia-100 to-indigo-100
+  py-4 shadow
+  dark:from-fuchsia-500 dark:to-indigo-500`
 
 const StyledContainer = tw(Container)`
   flex flex-row items-center justify-between gap-2`
@@ -27,9 +27,9 @@ export const Header: FC = () => {
   return (
     <StyledWrapper $as="header">
       <StyledContainer>
-        <Link href="/">
-          <Logo src={LOGO_URL} alt="Github Logo" width={40} height={40} />
-        </Link>
+        <StyledLink href="/">
+          <Logo /> Github Directory
+        </StyledLink>
 
         <UserSearch />
 

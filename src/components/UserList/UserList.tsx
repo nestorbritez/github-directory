@@ -13,7 +13,7 @@ const StyledGrid = tw(Grid)`
   grid-cols-1 lg:grid-cols-3`
 
 const UserList: FC = () => {
-  const users = useUserListData()
+  const { data: users } = useUserListData()
 
   return (
     <QuerySuspense>

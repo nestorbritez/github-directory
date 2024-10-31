@@ -8,9 +8,15 @@ type User = {
   location: string | null
   blog: string
   twitter: string | null
+  followers: number
+  following: number
+  publicRepos: number
+  publicGists: number
 }
 
 type Users = User[]
+
+type AutocompletedUser = Pick<User, 'id' | 'username' | 'avatarUrl'>
 
 type GithubUser = {
   id: number
@@ -32,4 +38,10 @@ type GithubUser = {
   updated_at: string
 }
 
-export { GithubUser, User, Users }
+type GithubUserSearch = {
+  total_count: number
+  incomplete_results: boolean
+  items: GithubUser[]
+}
+
+export { AutocompletedUser, GithubUser, GithubUserSearch, User, Users }

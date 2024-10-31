@@ -14,6 +14,9 @@ const config: Config = {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
       },
+      gridTemplateRows: {
+        fluid: 'repeat(auto-fit, 1fr)',
+      },
     },
   },
   plugins: [],

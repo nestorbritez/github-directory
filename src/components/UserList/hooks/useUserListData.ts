@@ -1,6 +1,6 @@
 import type { Users } from '@/lib/entities/User'
-import { useAPIQuery } from '@/lib/hooks/useAPIQuery'
+import { useSuspenseAPI } from '@/lib/hooks/useSuspenseAPI'
 
-const useUserListData = () => useAPIQuery<Users>(['api-users'], '/users')
+const useUserListData = () => useSuspenseAPI<Users>(['api-users'], '/users')
 
 export { useUserListData }

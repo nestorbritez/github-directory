@@ -6,7 +6,7 @@ import { transformUser } from '@/lib/utils/transform'
 
 const getUserList = () =>
   github
-    .get<Users, GithubUser[]>(`/users`, { params: { per_page: 24 } })
+    .get<Users, GithubUser[]>(`/users`, { params: { per_page: 99 } })
     .then((users) => users.map(transformUser))
 
 const handler = async (

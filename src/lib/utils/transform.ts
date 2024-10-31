@@ -10,6 +10,10 @@ const transformUser = (user: GithubUser): User => ({
   name: user.name,
   bio: user.bio,
   twitter: user.twitter_username,
+  followers: user.followers,
+  following: user.following,
+  publicRepos: user.public_repos,
+  publicGists: user.public_gists,
 })
 
 export { transformUser }
