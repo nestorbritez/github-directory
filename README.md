@@ -8,9 +8,6 @@ A Next.js application for exploring GitHub users and managing favorites.
 https://github.com/user-attachments/assets/0633d855-e9e4-4b7c-95d8-626e2c4ea2b3
 
 
-<img width="1143" alt="Screenshot 2024-10-31 at 12 58 02 PM" src="https://github.com/user-attachments/assets/9169d97a-e8d5-46dd-9466-85a44b076845">
-
-
 ## Features
 
 - User Search: Find GitHub users by username with autocomplete functionality.
