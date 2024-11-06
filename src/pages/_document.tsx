@@ -14,7 +14,7 @@ export default function Document() {
         <NextScript />
         <Footer>
           {`made with ♥ in 🇦🇷 by `}
-          <a href="mailto:nestor.britez@me.com">nestor.britez@me.com</a>
+          <a href="mailto:hi@shinywhippet.dev">shinywhippet.dev</a>
         </Footer>
       </body>
     </Html>
